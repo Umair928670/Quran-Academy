@@ -5,6 +5,7 @@ import TrialForm from './components/TrialForm'
 import Courses from './components/Courses'
 import WhyChooseUs from './components/WhyChooseUs'
 import HowItWorks from './components/HowItWorks'
+import ClassPlatforms from './components/ClassPlatforms'
 import LadiesSection from './components/LadiesSection'
 import GlobalLearning from './components/GlobalLearning'
 import Testimonials from './components/Testimonials'
@@ -24,6 +25,7 @@ export default function App() {
           <Courses />
           <WhyChooseUs />
           <HowItWorks />
+          <ClassPlatforms />
           <LadiesSection />
           <GlobalLearning />
           <Testimonials />

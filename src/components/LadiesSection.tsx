@@ -2,8 +2,7 @@ import { CheckCircle, ArrowRight } from 'lucide-react'
 import { useIntersection } from '../hooks/useIntersection'
 import { useLanguage } from '../context/LanguageContext'
 
-const ladiesImage =
-  'https://images.unsplash.com/photo-1529390079861-591de354faf5?w=700&h=560&fit=crop&auto=format'
+import ladiesImage from '../assets/ladies-section.jpg'
 
 export default function LadiesSection() {
   const { t, lang, dir } = useLanguage()

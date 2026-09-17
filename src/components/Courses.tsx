@@ -3,11 +3,16 @@ import { CheckCircle } from 'lucide-react'
 import { useIntersection } from '../hooks/useIntersection'
 import { useLanguage } from '../context/LanguageContext'
 
+import tajweedImg from '../assets/course-tajweed.jpg'
+import hifzImg from '../assets/course-hifz.jpg'
+import islamicStudiesImg from '../assets/course-islamic-studies.jpg'
+import ladiesImg from '../assets/course-ladies.jpg'
+
 const courseImages = [
-  'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600&h=340&fit=crop&auto=format',
-  'https://images.unsplash.com/photo-1544928147-79a2dbc1f389?w=600&h=340&fit=crop&auto=format',
-  'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=340&fit=crop&auto=format',
-  'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=600&h=340&fit=crop&auto=format',
+  tajweedImg,
+  hifzImg,
+  islamicStudiesImg,
+  ladiesImg,
 ]
 
 function CourseCard({ title, desc, points, img, visible, delay, lang }: {

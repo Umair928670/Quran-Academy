@@ -66,7 +66,7 @@ export default function Navbar() {
           >
             <img
               src="/logo.png"
-              alt="Taleem ul Quran Learning"
+              alt="Logo"
               style={{ height: isDesktop ? '52px' : '38px', width: 'auto', display: 'block', flexShrink: 0, objectFit: 'contain' }}
             />
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2, minWidth: 0 }}>

@@ -149,6 +149,37 @@ const translations = {
       features: ['Female tutors', 'Private 1-on-1 classes', 'Flexible scheduling', 'Online from home'],
       cta: 'Explore Ladies Classes →',
     },
+    platforms: {
+      badge: 'Learning Platforms',
+      heading: 'Learn Through Your Favorite App',
+      sub: 'We conduct personalized 1-on-1 live classes on WhatsApp, Zoom, and Google Meet with zero hassle.',
+      whatsappTitle: 'WhatsApp Video',
+      whatsappTag: 'Direct & Simple',
+      whatsappDesc: 'Ideal for quick 1-on-1 lessons directly from your smartphone or tablet with zero setup required.',
+      whatsappFeatures: [
+        '1-on-1 direct audio & video calling',
+        'Lesson notes & audio recitation voice clips in chat',
+        'Instant messaging support with your teacher',
+      ],
+      zoomTitle: 'Zoom Meeting',
+      zoomTag: 'Interactive Classroom',
+      zoomDesc: 'Perfect for children and adults who want live screen sharing for Quran text, Tajweed rules and digital whiteboard.',
+      zoomFeatures: [
+        'Crystal clear HD video & audio quality',
+        'Live Quran screen-sharing with Tajweed highlighting',
+        'Interactive whiteboard & lesson recording options',
+      ],
+      meetTitle: 'Google Meet',
+      meetTag: '1-Click Browser Join',
+      meetDesc: 'Fast, secure, and works seamlessly in any web browser without needing to install separate software.',
+      meetFeatures: [
+        'Join instantly with a 1-click link in your browser',
+        'Works on laptop, iPad, Android & iPhone seamlessly',
+        'Google Calendar reminders before every class',
+      ],
+      cta: 'Start Your Free Class Today →',
+      footerNote: 'All you need is an internet connection and your smartphone, tablet, or laptop.',
+    },
     global: {
       heading: 'Learn Quran From Anywhere',
       sub: 'Wherever you are, your Quran learning journey can continue from home.',
@@ -458,6 +489,37 @@ const translations = {
       features: ['خاتون اساتذہ', 'نجی 1-on-1 کلاسز', 'لچکدار اوقات', 'گھر سے آن لائن'],
       cta: 'خواتین کلاسز دیکھیں →',
     },
+    platforms: {
+      badge: 'کلاس کے ذرائع',
+      heading: 'اپنی پسندیدہ ایپ کے ذریعے کلاس لیں',
+      sub: 'ہم واٹس ایپ، زوم اور گوگل میٹ پر مکمل آسانی اور سہولت کے ساتھ 1-on-1 انٹرایکٹو کلاسز لیتے ہیں۔',
+      whatsappTitle: 'واٹس ایپ ویڈیو',
+      whatsappTag: 'آسان اور براہ راست',
+      whatsappDesc: 'سمارٹ فون یا ٹیبلیٹ سے بغیر کسی اضافی ایپ کے براہ راست 1-on-1 کلاس کے لیے بہترین انتخاب۔',
+      whatsappFeatures: [
+        '1-on-1 براہ راست ویڈیو اور آڈیو کالز',
+        'چیٹ میں روزانہ کے اسباق اور صوتی تلاوت کے کلپس',
+        'اپنے استاد کے ساتھ فوری رابطہ اور رہنمائی',
+      ],
+      zoomTitle: 'زوم میٹنگ',
+      zoomTag: 'انٹرایکٹو ایچ ڈی کلاس',
+      zoomDesc: 'بچوں اور بڑوں کے لیے سکرین شیئرنگ، ڈیجیٹل بورڈ اور قرآن تجوید رولز کی لائیو تدریس کے لیے بہترین۔',
+      zoomFeatures: [
+        'اعلیٰ معیار کی ایچ ڈی آڈیو اور ویڈیو',
+        'قرآن مجید اور تجوید کے قواعد کی لائیو سکرین شیئرنگ',
+        'ڈیجیٹل وائٹ بورڈ اور پریکٹس کی سہولت',
+      ],
+      meetTitle: 'گوگل میٹ',
+      meetTag: 'ایک کلک پر جوائن کریں',
+      meetDesc: 'بغیر کوئی سافٹ ویئر انسٹال کیے سیدھے اپنے انٹرنیٹ براؤزر پر انتہائی تیز اور محفوظ کلاس لیں۔',
+      meetFeatures: [
+        'صرف ایک کلک پر براؤزر سے کلاس میں شامل ہوں',
+        'لیپ ٹاپ، آئی پیڈ، اینڈرائڈ اور آئی فون پر مکمل سپورٹ',
+        'کلاس کے وقت سے پہلے گوگل کیلنڈر یاد دہانی',
+      ],
+      cta: 'آج ہی مفت ٹرائل بک کریں →',
+      footerNote: 'آپ کو صرف انٹرنیٹ اور اپنے سمارٹ فون، ٹیبلٹ یا لیپ ٹاپ کی ضرورت ہے۔',
+    },
     global: {
       heading: 'کہیں سے بھی قرآن سیکھیں',
       sub: 'آپ جہاں بھی ہوں، آپ کا قرآن سیکھنے کا سفر اپنے گھر کے آرام سے جاری رہ سکتا ہے۔',
@@ -626,7 +688,7 @@ const translations = {
 interface LanguageContextType {
   lang: Language
   setLang: (l: Language) => void
-  t: (typeof translations)['en']
+  t: typeof translations[Language]
   dir: 'ltr' | 'rtl'
 }
 

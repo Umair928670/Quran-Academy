@@ -5,7 +5,7 @@ import { useLanguage } from '../context/LanguageContext'
 // Configurable destination email, Web3Forms, or form webhook endpoint
 // You can set VITE_CONTACT_EMAIL, VITE_WEB3FORMS_ACCESS_KEY, or VITE_FORM_ENDPOINT in your .env / Vercel
 const FORM_ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT || ''
-const DESTINATION_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || 'extramailcom2233@gmail.com'
+const DESTINATION_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || 'taleemulquranlearning@gmail.com'
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''
 const WHATSAPP_NUMBER = '923701396275'
 
@@ -166,7 +166,7 @@ function WhatsAppPhoneInput({
   onCountryCodeChange,
   phone,
   onPhoneChange,
-  placeholder = '300 0000000',
+  placeholder = '',
   lang,
 }: WhatsAppPhoneInputProps) {
   return (

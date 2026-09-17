@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react'
+import { MessageCircle, Mail } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import { useIntersection } from '../hooks/useIntersection'
 
@@ -108,6 +108,27 @@ export default function FinalCTA() {
           >
             {t.finalCta.cta1}
           </button>
+          <a
+            href="mailto:taleemulquranlearning@gmail.com"
+            className="btn-secondary"
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 'var(--text-sm)',
+              padding: 'var(--space-4) var(--space-6)',
+              background: 'rgba(255,255,255,0.08)',
+              borderColor: 'rgba(255,255,255,0.2)',
+              color: 'white',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 'var(--space-2)',
+              textDecoration: 'none',
+              borderRadius: 'var(--radius-full)',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            <Mail size={16} color="var(--color-accent)" />
+            <span>taleemulquranlearning@gmail.com</span>
+          </a>
         </div>
       </div>
     </section>

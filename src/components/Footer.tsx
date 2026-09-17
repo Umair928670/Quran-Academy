@@ -17,6 +17,7 @@ export default function Footer() {
       links: [
         { label: t.footer.faqLink, href: '#faq' },
         { label: t.footer.contactLink, href: '#contact' },
+        { label: 'taleemulquranlearning@gmail.com', href: 'mailto:taleemulquranlearning@gmail.com', external: true },
         { label: t.footer.whatsappLink, href: 'https://wa.me/923701396275', external: true },
       ],
     },
