@@ -119,8 +119,137 @@ function CustomSelect({ label, placeholder, value, onChange, options, dir, lang 
   )
 }
 
+const COUNTRY_DIAL_CODES = [
+  { code: '+92', country: 'Pakistan', label: '🇵🇰 +92 (PK)' },
+  { code: '+44', country: 'United Kingdom', label: '🇬🇧 +44 (UK)' },
+  { code: '+1', country: 'United States', label: '🇺🇸 +1 (US/CA)' },
+  { code: '+971', country: 'UAE', label: '🇦🇪 +971 (UAE)' },
+  { code: '+966', country: 'Saudi Arabia', label: '🇸🇦 +966 (SA)' },
+  { code: '+61', country: 'Australia', label: '🇦🇺 +61 (AU)' },
+  { code: '+49', country: 'Germany', label: '🇩🇪 +49 (DE)' },
+  { code: '+974', country: 'Qatar', label: '🇶🇦 +974 (QA)' },
+  { code: '+968', country: 'Oman', label: '🇴🇲 +968 (OM)' },
+  { code: '+965', country: 'Kuwait', label: '🇰🇼 +965 (KW)' },
+  { code: '+973', country: 'Bahrain', label: '🇧🇭 +973 (BH)' },
+  { code: '+60', country: 'Malaysia', label: '🇲🇾 +60 (MY)' },
+  { code: '+90', country: 'Turkey', label: '🇹🇷 +90 (TR)' },
+  { code: '+91', country: 'India', label: '🇮🇳 +91 (IN)' },
+  { code: '+880', country: 'Bangladesh', label: '🇧🇩 +880 (BD)' },
+  { code: '+27', country: 'South Africa', label: '🇿🇦 +27 (ZA)' },
+  { code: '+34', country: 'Spain', label: '🇪🇸 +34 (ES)' },
+  { code: '+33', country: 'France', label: '🇫🇷 +33 (FR)' },
+  { code: '+39', country: 'Italy', label: '🇮🇹 +39 (IT)' },
+  { code: '+31', country: 'Netherlands', label: '🇳🇱 +31 (NL)' },
+  { code: '+47', country: 'Norway', label: '🇳🇴 +47 (NO)' },
+  { code: '+46', country: 'Sweden', label: '🇸🇪 +46 (SE)' },
+  { code: '+41', country: 'Switzerland', label: '🇨🇭 +41 (CH)' },
+  { code: '+64', country: 'New Zealand', label: '🇳🇿 +64 (NZ)' },
+  { code: '+62', country: 'Indonesia', label: '🇮🇩 +62 (ID)' },
+  { code: '+20', country: 'Egypt', label: '🇪🇬 +20 (EG)' },
+  { code: '+962', country: 'Jordan', label: '🇯🇴 +962 (JO)' },
+  { code: '+353', country: 'Ireland', label: '🇮🇪 +353 (IE)' },
+]
+
+interface WhatsAppPhoneInputProps {
+  label: string
+  countryCode: string
+  onCountryCodeChange: (code: string) => void
+  phone: string
+  onPhoneChange: (phone: string) => void
+  placeholder?: string
+  lang?: string
+}
+
+function WhatsAppPhoneInput({
+  label,
+  countryCode,
+  onCountryCodeChange,
+  phone,
+  onPhoneChange,
+  placeholder = '300 0000000',
+  lang,
+}: WhatsAppPhoneInputProps) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+      <label
+        style={{
+          fontFamily: lang === 'ur' ? 'var(--font-urdu)' : 'var(--font-body)',
+          fontSize: 'var(--text-xs)',
+          fontWeight: 600,
+          color: 'var(--color-text-secondary)',
+        }}
+      >
+        {label}
+      </label>
+      <div
+        style={{
+          display: 'flex',
+          direction: 'ltr',
+          borderRadius: 'var(--radius-md)',
+          border: '1px solid var(--color-border)',
+          background: 'var(--color-bg)',
+          overflow: 'hidden',
+          transition: 'border-color var(--transition-fast), box-shadow var(--transition-fast)',
+        }}
+        onFocusCapture={e => {
+          e.currentTarget.style.borderColor = 'var(--color-primary)'
+          e.currentTarget.style.boxShadow = '0 0 0 3px var(--color-primary-muted)'
+        }}
+        onBlurCapture={e => {
+          e.currentTarget.style.borderColor = 'var(--color-border)'
+          e.currentTarget.style.boxShadow = 'none'
+        }}
+      >
+        <select
+          value={countryCode}
+          onChange={e => onCountryCodeChange(e.target.value)}
+          aria-label="Country Code"
+          style={{
+            padding: '10px 8px',
+            border: 'none',
+            borderRight: '1px solid var(--color-border)',
+            background: 'var(--color-bg-section-alt)',
+            color: 'var(--color-text-primary)',
+            fontFamily: 'var(--font-body)',
+            fontSize: 'var(--text-xs)',
+            fontWeight: 600,
+            cursor: 'pointer',
+            outline: 'none',
+            maxWidth: '128px',
+            flexShrink: 0,
+          }}
+        >
+          {COUNTRY_DIAL_CODES.map(c => (
+            <option key={c.code} value={c.code}>
+              {c.label}
+            </option>
+          ))}
+        </select>
+        <input
+          type="tel"
+          dir="ltr"
+          value={phone}
+          onChange={e => onPhoneChange(e.target.value)}
+          placeholder={placeholder}
+          style={{
+            width: '100%',
+            padding: '10px 12px',
+            border: 'none',
+            background: 'transparent',
+            color: 'var(--color-text-primary)',
+            fontFamily: 'var(--font-body)',
+            fontSize: 'var(--text-sm)',
+            outline: 'none',
+          }}
+        />
+      </div>
+    </div>
+  )
+}
+
 export default function TrialForm() {
   const { t, lang, dir } = useLanguage()
+  const [countryCode, setCountryCode] = useState('+92')
   const [form, setForm] = useState({
     name: '', whatsapp: '', email: '', country: '',
     age: '', course: '', tutor: '', time: '',
@@ -139,7 +268,14 @@ export default function TrialForm() {
 
   const set = (k: keyof typeof form) => (v: string) => setForm(f => ({ ...f, [k]: v }))
 
-  const required = ['name', 'whatsapp', 'country', 'course'] as const
+  const handleCountryChange = (c: string) => {
+    set('country')(c)
+    setErrors(e => ({ ...e, country: '' }))
+    const matched = COUNTRY_DIAL_CODES.find(dc => dc.country.toLowerCase() === c.toLowerCase())
+    if (matched) {
+      setCountryCode(matched.code)
+    }
+  }
 
   const validate = () => {
     const errs: Partial<Record<keyof typeof form, string>> = {}
@@ -167,13 +303,15 @@ export default function TrialForm() {
         ? 'https://api.web3forms.com/submit'
         : FORM_ENDPOINT
 
+      const fullWhatsApp = `${countryCode} ${form.whatsapp.trim()}`
+
       const payload = {
         access_key: WEB3FORMS_KEY || undefined,
         from_name: 'Taleem ul Quran Learning Portal',
         to_email: DESTINATION_EMAIL,
         subject: `New Free Trial Booking: ${form.name} (${form.course})`,
         student_name: form.name,
-        whatsapp_number: form.whatsapp,
+        whatsapp_number: fullWhatsApp,
         email: form.email || 'Not provided',
         country: form.country,
         age_group: form.age,
@@ -213,7 +351,7 @@ export default function TrialForm() {
 
   /* ── Success state (shared mobile + desktop) ── */
   const whatsappBookingUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    `Assalamu Alaikum, I have booked a free trial class on Taleem ul Quran Learning.\n\n*Name:* ${form.name}\n*Course:* ${form.course}\n*Country:* ${form.country}\n*WhatsApp:* ${form.whatsapp}`
+    `Assalamu Alaikum, I have booked a free trial class on Taleem ul Quran Learning.\n\n*Name:* ${form.name}\n*Course:* ${form.course}\n*Country:* ${form.country}\n*WhatsApp:* ${countryCode} ${form.whatsapp}`
   )}`
 
   const successCard = (
@@ -261,12 +399,13 @@ export default function TrialForm() {
           {errors.name && <span style={{ fontFamily: lang === 'ur' ? 'var(--font-urdu)' : 'var(--font-body)', fontSize: '11px', color: '#dc2626' }}>{errors.name}</span>}
         </div>
         <div>
-          <CustomInput
+          <WhatsAppPhoneInput
             label={`${t.trial.fields.whatsapp} *`}
+            countryCode={countryCode}
+            onCountryCodeChange={setCountryCode}
+            phone={form.whatsapp}
+            onPhoneChange={v => { set('whatsapp')(v); setErrors(e => ({ ...e, whatsapp: '' })) }}
             placeholder={t.trial.placeholders.whatsapp}
-            value={form.whatsapp}
-            onChange={v => { set('whatsapp')(v); setErrors(e => ({ ...e, whatsapp: '' })) }}
-            dir="ltr"
             lang={lang}
           />
           {errors.whatsapp && <span style={{ fontFamily: lang === 'ur' ? 'var(--font-urdu)' : 'var(--font-body)', fontSize: '11px', color: '#dc2626' }}>{errors.whatsapp}</span>}
@@ -285,7 +424,7 @@ export default function TrialForm() {
             label={`${t.trial.fields.country} *`}
             options={countryOptions}
             value={form.country}
-            onChange={v => { set('country')(v); setErrors(e => ({ ...e, country: '' })) }}
+            onChange={handleCountryChange}
             placeholder={t.trial.placeholders.country}
             dir={dir}
             lang={lang}
@@ -379,12 +518,13 @@ export default function TrialForm() {
             {errors.name && <span style={{ fontFamily: lang === 'ur' ? 'var(--font-urdu)' : 'var(--font-body)', fontSize: '11px', color: '#dc2626' }}>{errors.name}</span>}
           </div>
           <div>
-            <CustomInput
+            <WhatsAppPhoneInput
               label={`${t.trial.fields.whatsapp} *`}
+              countryCode={countryCode}
+              onCountryCodeChange={setCountryCode}
+              phone={form.whatsapp}
+              onPhoneChange={v => { set('whatsapp')(v); setErrors(e => ({ ...e, whatsapp: '' })) }}
               placeholder={t.trial.placeholders.whatsapp}
-              value={form.whatsapp}
-              onChange={v => { set('whatsapp')(v); setErrors(e => ({ ...e, whatsapp: '' })) }}
-              dir="ltr"
               lang={lang}
             />
             {errors.whatsapp && <span style={{ fontFamily: lang === 'ur' ? 'var(--font-urdu)' : 'var(--font-body)', fontSize: '11px', color: '#dc2626' }}>{errors.whatsapp}</span>}
@@ -394,7 +534,7 @@ export default function TrialForm() {
               label={`${t.trial.fields.country} *`}
               options={countryOptions}
               value={form.country}
-              onChange={v => { set('country')(v); setErrors(e => ({ ...e, country: '' })) }}
+              onChange={handleCountryChange}
               placeholder={t.trial.placeholders.country}
               dir={dir}
               lang={lang}
