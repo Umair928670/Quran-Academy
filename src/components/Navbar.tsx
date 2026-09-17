@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Menu, X, Sun, Moon, Globe } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
-import taleemLogo from '../assets/taleem-logo.png'
 
 export default function Navbar() {
   const { lang, setLang, t, dir } = useLanguage()
@@ -66,9 +65,9 @@ export default function Navbar() {
             style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0, textDecoration: 'none', minWidth: 0 }}
           >
             <img
-              src={taleemLogo}
+              src="/logo.png"
               alt="Taleem ul Quran Learning"
-              style={{ height: isDesktop ? '56px' : '40px', width: 'auto', display: 'block', flexShrink: 0 }}
+              style={{ height: isDesktop ? '52px' : '38px', width: 'auto', display: 'block', flexShrink: 0, objectFit: 'contain' }}
             />
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2, minWidth: 0 }}>
               <span style={{

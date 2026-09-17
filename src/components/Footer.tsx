@@ -1,5 +1,4 @@
 import { useLanguage } from '../context/LanguageContext'
-import taleemLogo from '../assets/taleem-logo.png'
 
 export default function Footer() {
   const { t, lang, setLang, dir } = useLanguage()
@@ -74,9 +73,9 @@ export default function Footer() {
               onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
             >
               <img
-                src={taleemLogo}
+                src="/logo.png"
                 alt="Taleem ul Quran Learning"
-                style={{ height: '56px', width: 'auto' }}
+                style={{ height: '56px', width: 'auto', display: 'block', objectFit: 'contain' }}
               />
             </a>
             <p style={{ fontFamily: lang === 'ur' ? 'var(--font-urdu)' : 'var(--font-display)', fontSize: 'var(--text-base)', fontWeight: 600, color: 'var(--color-accent)' }}>
